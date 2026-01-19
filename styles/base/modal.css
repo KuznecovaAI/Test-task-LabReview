@@ -1,0 +1,203 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--modal-bg-color);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+}
+
+.modal--active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__window {
+    position: relative;
+    background: var(--light-color);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.7);
+    transition: transform var(--transition-base);
+    box-shadow: 0 20px 60px var(--primary-light-color);
+}
+
+.modal--active .modal__window {
+    transform: scale(1);
+}
+
+.modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background var(--transition-base);
+}
+
+.modal__close::before,
+.modal__close::after {
+    content: "";
+    position: absolute;
+
+    width: 16px;
+    height: 2px;
+
+    background: currentColor;
+    border-radius: 2px;
+
+    transition: transform var(--transition-base);
+}
+
+.modal__close::before {
+    transform: rotate(45deg);
+}
+
+.modal__close::after {
+    transform: rotate(-45deg);
+}
+
+.modal__close:hover {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+
+.modal__close:hover::before {
+    transform: rotate(135deg);
+}
+
+.modal__close:hover::after {
+    transform: rotate(225deg);
+}
+
+.modal__content {
+    max-width: 500px;
+    width: 100%;
+}
+
+.modal__title {
+    font-size: clamp(23px, calc((100vw - 360px) / (1440 - 360) * (28 - 23) + 23px), 28px);
+    text-align: center;
+}
+
+.modal__text {
+    color: var(--grey-color);
+    line-height: 1.6;
+    font-size: clamp(14px, calc( (100vw - 360px)/(1440 - 360) * (16 - 14) + 14px ),16px);
+    margin: 15px 0 10px 0;
+}
+
+
+/*Promo*/
+.promo__code {
+    font-size: clamp(25px, calc( (100vw - 360px)/(1440 - 360) * (30 - 25) + 25px ),30px);
+    font-weight: 700;
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.promo__text {
+    color: var(--grey-color);
+    font-size: clamp(14px, calc( (100vw - 360px)/(1440 - 360) * (16 - 14) + 14px ),16px);
+}
+
+
+/*Form*/
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-form__input {
+    padding: 12px 15px;
+    border: 2px solid var(--light-color);
+    border-radius: var(--radius-sm);
+    font-size: clamp(13px, calc( (100vw - 360px)/(1440 - 360) * (15 - 13) + 13px ),15px);
+    transition: border-color var(--transition-base);
+    border-color: var(--primary-color);
+}
+
+.contact-form__input:focus {
+    outline:var(--primary-color) ;
+    background-color: var(--primary-light-color);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: clamp(10px, calc( (100vw - 360px)/(1440 - 360) * (12 - 10) + 10px ),12px);
+    margin-top: 5px;
+    display: none;
+}
+
+
+/*Quiz*/
+.quiz__question {
+    margin-bottom: 20px;
+}
+
+.quiz__title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: clamp(13px, calc( (100vw - 360px)/(1440 - 360) * (15 - 13) + 13px ),15px);
+}
+
+.quiz__option {
+    font-size: clamp(10px, calc( (100vw - 360px)/(1440 - 360) * (12 - 10) + 10px ),12px);
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: var(--grey-color);
+}
+
+.quiz input[type="radio"] {
+    accent-color: var(--primary-color);
+}
+
+
+@media (max-width: 768px) {
+    .modal__window {
+        max-width: 768px;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .promo {
+        text-align: center;
+    }
+}
+

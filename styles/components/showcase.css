@@ -1,0 +1,115 @@
+.showcase {
+    background: var(--light-color);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.showcase__title {
+    text-align: center;
+    font-size: clamp(30px, calc((100vw - 360px) / (1440 - 360) * (36 - 30) + 30px), 36px);
+    color: var(--dark-color);
+    font-weight: 700;
+}
+
+/*Filter*/
+.showcase__filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+
+/*Product-card*/
+.showcase__product {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px;
+    perspective: 1000px;
+}
+
+.product-card {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    height: 370px;
+    transform-style: preserve-3d;
+}
+
+.product-card:hover {
+    transform: translateY(-10px) rotateY(5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.product-card__image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(45deg, var(--primary-img-gradient-color) 0%, var(--secondary-img-gradient-color) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card__image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: left var(--transition-slow);
+}
+
+.product-card:hover .product-card__image::after {
+    left: 100%;
+}
+
+.product-card__info {
+    padding: 15px;
+    color: var(--light-color);
+}
+
+.product-card__title {
+    font-size: clamp(16px, calc((100vw - 360px) / (1440 - 360) * (20 - 16) + 16px), 20px);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.product-card__price {
+    font-size: clamp(20px, calc((100vw - 360px) / (1440 - 360) * (24 - 20) + 20px), 24px);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.product-card__description {
+    font-size: 1.4rem;
+    opacity: 0.9;
+    margin-bottom: 10px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .showcase {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 510px) {
+    .showcase__filter {
+        gap: 12px;
+    }
+}
